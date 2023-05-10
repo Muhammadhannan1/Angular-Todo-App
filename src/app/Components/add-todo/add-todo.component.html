@@ -1,0 +1,14 @@
+<form (ngSubmit)="OnSubmit()" [formGroup]="ReactiveForm">
+  <div class="mb-3">
+    <label for="title" class="todoFormLAbel label">Title</label>
+    <input type="text" class="TodoForm input" id="title" name="title"  formControlName="Title" [class.invalid]="ReactiveForm.get('Title')?.invalid && ReactiveForm.get('Title')?.dirty || ReactiveForm.get('Title')?.touched || isSubmitted">
+    <span *ngIf="ReactiveForm.get('Title')?.hasError('required') &&( ReactiveForm.get('Title')?.dirty || ReactiveForm.get('Title')?.touched)" class="error">Title Field is Required</span>
+  </div>
+  <div class="mb-3">
+    <label for="description" class="todoFormLAbel-label">Description</label>
+    <input type="text" class="TodoForm" id="description" name="description" formControlName="Description">
+    <span *ngIf="ReactiveForm.get('Description')?.hasError('required') &&( ReactiveForm.get('Description')?.dirty || ReactiveForm.get('Description')?.touched)" class="error">Description Field is Required</span>
+  </div>
+
+  <button  type="submit" [disabled]="ReactiveForm.invalid" class="btn btn-danger" >Add Todo</button>
+</form>

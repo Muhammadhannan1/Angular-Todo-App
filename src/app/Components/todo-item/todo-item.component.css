@@ -1,0 +1,42 @@
+.icons>i{
+  font-size: 18px;
+  margin: 0 4px;
+  cursor: pointer;
+  color: rgb(199 16 16 / 81%);
+}
+.item{
+  width: 18rem;
+}
+.todoFormLAbel{
+  padding-bottom: 10px;
+  }
+  .TodoForm{
+    border: 1px solid rgb(207, 207, 207);
+    outline: none;
+    border-radius: 8px;
+    width: 100%;
+    padding: 0.4rem;
+  }
+  .error{
+    color: red;
+  }
+
+  .btndiv>button{
+    display: block;
+    margin: auto;
+  }
+  .closebtn{
+    border: none;
+    background-color: #fff;
+    outline: none;
+  }
+  .cross{
+    font-size: 35px;
+    font-weight: 500;
+  }
+@media screen and (max-width:400px) {
+  .item{
+    width: 78vw;
+  }
+  }
+

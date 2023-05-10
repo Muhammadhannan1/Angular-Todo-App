@@ -1,0 +1,23 @@
+.todoBox{
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  max-width: 99%;
+  justify-content: center;
+}
+.starterText{
+  font-size: 26px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.heading{
+  margin: 2rem 0;
+  font-size: 30px;
+  font-style: italic;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+@media screen and (max-width:400px) {
+.todoBox{
+  justify-content: flex-start;
+}
+}

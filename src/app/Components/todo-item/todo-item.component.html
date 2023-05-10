@@ -1,0 +1,39 @@
+<div class="card mt-5 item" >
+  <div class="card-body">
+    <h5 class="card-title" style="display: inline;">{{Todo.title}}</h5>
+    <span class="icons" style=" position: absolute; right: 10px;">
+      <i class="fa-solid fa-trash" (click)="todoDelete(Todo)"></i>
+      <i class="fa-sharp fa-solid fa-pen-to-square" (click)="openModal(myModal)" (click)="sendTodoUpdate(Todo)"></i>
+    </span>
+    <p class="card-text">{{Todo.description}} </p>
+  </div>
+</div>
+
+
+
+<ng-template #myModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Update Your Todo</h4>
+    <button ngClass="closebtn" type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span ngClass="cross" aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form  [formGroup]="ReactiveForm" (ngSubmit)="OnUpdate(Todo)" >
+      <div class="mb-3">
+        <label for="etitle" class="todoFormLAbel label">Title</label>
+        <input type="text" class="TodoForm input" id="etitle" name="etitle"  formControlName="Title" [class.invalid]="ReactiveForm.get('Title')?.invalid && ReactiveForm.get('Title')?.dirty || ReactiveForm.get('Title')?.touched || isSubmitted">
+        <span *ngIf="ReactiveForm.get('Title')?.hasError('required') &&( ReactiveForm.get('Title')?.dirty || ReactiveForm.get('Title')?.touched)" class="error">Title Field is Required</span>
+      </div>
+      <div class="mb-3">
+        <label for="edescription" class="todoFormLAbel-label">Description</label>
+        <input type="text" class="TodoForm" id="edescription" name="edescription" formControlName="Description">
+        <span *ngIf="ReactiveForm.get('Description')?.hasError('required') && ReactiveForm.get('Description')?.hasError('minLength') &&( ReactiveForm.get('Description')?.dirty || ReactiveForm.get('Description')?.touched)" class="error">Description Field is Required</span>
+      </div>
+    <div class="btndiv">
+      <button [disabled]="ReactiveForm.invalid" type="submit" class="btn btn-success" (click)="modal.dismiss()">Update Todo</button>
+    </div>
+    </form>
+  </div>
+</ng-template>
+

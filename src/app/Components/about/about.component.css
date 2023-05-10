@@ -1,0 +1,42 @@
+.box{
+  /* width: 50%; */
+  border-radius:10px ;
+}
+.mainbox{
+  width: 50%;
+}
+.para{
+  line-height: 2;
+  font-size: 22px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  padding-bottom: 1rem;
+}
+.heading{
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 100;
+  letter-spacing: 2px;
+}
+
+@media screen and (max-width:940px) {
+.mainbox{
+  width: 100%;
+}
+  }
+
+  @media screen and (max-width:490px) {
+.para{
+  line-height: 1.7;
+  font-size: 20px;
+}
+      }
+  @media screen and (max-width:300px) {
+.para{
+  line-height: 1.6;
+  font-size: 19px;
+}
+.heading{
+  letter-spacing: normal;
+  font-size: 28px;
+}
+      }

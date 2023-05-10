@@ -1,0 +1,14 @@
+<div class="container mt-4">
+<app-add-todo (TodoAdd)="(addTodo($event))" ></app-add-todo>
+
+<h4 class="heading">Your Todos</h4>
+<div class="starterText" *ngIf="todos.length===0; else elseBlock">You Have Not Added Any Todos Yet</div>
+
+<ng-template #elseBlock>
+<div class="todoBox">
+<ul *ngFor="let todo of todos; index as i ">
+<app-todo-item [Todo]="todo" (TodoDelete)="deleteTodo($event)" (TodoUpdate)="updateTodo($event)" (SendTodoUpdate)="CheckTodoIndex($event)"></app-todo-item>
+</ul>
+</div>
+</ng-template>
+</div>
