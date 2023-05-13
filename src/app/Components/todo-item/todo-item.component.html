@@ -28,7 +28,7 @@
       <div class="mb-3">
         <label for="edescription" class="todoFormLAbel-label">Description</label>
         <input type="text" class="TodoForm" id="edescription" name="edescription" formControlName="Description">
-        <span *ngIf="ReactiveForm.get('Description')?.hasError('required') && ReactiveForm.get('Description')?.hasError('minLength') &&( ReactiveForm.get('Description')?.dirty || ReactiveForm.get('Description')?.touched)" class="error">Description Field is Required</span>
+        <span *ngIf="ReactiveForm.get('Description')?.hasError('required') && ( ReactiveForm.get('Description')?.dirty || ReactiveForm.get('Description')?.touched)" class="error">Description Field is Required</span>
       </div>
     <div class="btndiv">
       <button [disabled]="ReactiveForm.invalid" type="submit" class="btn btn-success" (click)="modal.dismiss()">Update Todo</button>

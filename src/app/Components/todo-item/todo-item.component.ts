@@ -1,6 +1,6 @@
-import { Component, Input,Output ,EventEmitter,ViewChild } from '@angular/core';
+import { Component, Input,Output ,EventEmitter,ViewChild, OnInit } from '@angular/core';
 import { Todo } from 'src/Interface/todo';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -8,9 +8,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.css']
 })
-export class TodoItemComponent {
+export class TodoItemComponent implements OnInit {
 constructor(private fb : FormBuilder, private modalService: NgbModal){}
-@Input() Todo :Todo = {} as Todo;
+//@Input() Todo :Todo = {} as Todo;
+@Input() Todo: Todo = { title: '', description: '',active: true};
 @Output() TodoDelete : EventEmitter<Todo> = new EventEmitter();
 @Output() TodoUpdate : EventEmitter<Todo> = new EventEmitter();
 @Output() SendTodoUpdate : EventEmitter<Todo> = new EventEmitter();
@@ -21,14 +22,18 @@ openModal(content:any) {
   this.modalService.open(content);
 }
 
-ReactiveForm = this.fb.group({
-  Title:['',[Validators.required,Validators.minLength(3)]],
-  Description:['',[Validators.required,Validators.minLength(4)]]
-})
+ReactiveForm!: FormGroup;
 
+ngOnInit() {
+  this.ReactiveForm = this.fb.group({
+    Title: [this.Todo.title, [Validators.required, Validators.minLength(3)]],
+    Description: [this.Todo.description, [Validators.required, Validators.minLength(4)]]
+  });
+}
 isSubmitted = false;
 
 sendTodoUpdate(todo:Todo){
+
   this.SendTodoUpdate.emit(todo);
 }
 
